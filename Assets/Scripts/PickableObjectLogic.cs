@@ -34,23 +34,22 @@ public class PickableObjectLogic : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        var player = other.GetComponent<Player>();
         switch (_type)
         {
             case ObjectType.Bonus:
-                player.AddAccelearation(10, Random.Range(3, 5));
+                other.GetComponent<PlayerStats>().AddAccelearation(10, Random.Range(3, 5));
                 break;
 
             case ObjectType.Bomb:
-                player.TakeDamage(25);
+                other.GetComponent<PlayerStats>().TakeDamage(25);
                 Destroy(gameObject);
                 break;
 
             case ObjectType.Letter:
-                player.ShowLetter(_letter);
+                other.GetComponent<PlayerController>().ShowLetter(_letter);
                 break;
         }
-        player.GotObjectLogic(this);
+        other.GetComponent<PlayerLogger>().AddObjectInLogs(this);
         if (DestroyOnTouch)
             Destroy(gameObject);
     }

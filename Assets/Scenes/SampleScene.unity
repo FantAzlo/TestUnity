@@ -757,6 +757,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 423470022}
   m_CullTransparentMesh: 1
+--- !u!1 &474248962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 474248964}
+  - component: {fileID: 474248963}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &474248963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474248962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9255134014efd044aa78ddc4dbebd453, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &474248964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474248962}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.62634, y: -9.25842, z: 9.35499}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &490179805
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,6 +813,8 @@ GameObject:
   - component: {fileID: 490179807}
   - component: {fileID: 490179812}
   - component: {fileID: 490179806}
+  - component: {fileID: 490179814}
+  - component: {fileID: 490179813}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -788,20 +834,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2847fe13711ab14fb4ee8cb3668aa66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  _openLogsActions: {fileID: -5276402504254383944, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  _characterController: {fileID: 490179807}
-  _planeTransform: {fileID: 586862904}
-  _visual: {fileID: 952050298}
-  _letterUI: {fileID: 92910360}
-  _letterText: {fileID: 234396580}
-  _hpText: {fileID: 1550341935}
-  _logsText: {fileID: 758496995}
-  _gameOverMenu: {fileID: 1888637399}
   _logsMenu: {fileID: 235439612}
-  _speed: 10
-  _maxHp: 100
-  _hp: 0
+  _logsText: {fileID: 758496995}
 --- !u!143 &490179807
 CharacterController:
   m_ObjectHideFlags: 0
@@ -867,6 +901,44 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &490179813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490179805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ede9e65cc7dfb6541b3723bfa87b2d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  _openLogsActions: {fileID: -5276402504254383944, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  _characterController: {fileID: 490179807}
+  _planeTransform: {fileID: 586862904}
+  _playerStats: {fileID: 490179814}
+  _playerLogger: {fileID: 490179806}
+  _letterUI: {fileID: 92910360}
+  _letterText: {fileID: 234396580}
+--- !u!114 &490179814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490179805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1d2e39ccf96ea4c8ca3def6d2a4d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameOverMenu: {fileID: 1888637399}
+  _hpText: {fileID: 1550341935}
+  _visual: {fileID: 952050298}
+  _speed: 5
+  _maxHp: 100
+  _hp: 0
 --- !u!1 &586862900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,7 +1131,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1870994065}
+      - m_Target: {fileID: 474248963}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
@@ -2802,7 +2874,7 @@ GameObject:
   - component: {fileID: 1870994066}
   - component: {fileID: 1870994065}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3310,3 +3382,4 @@ SceneRoots:
   - {fileID: 490179811}
   - {fileID: 844211319}
   - {fileID: 1870994066}
+  - {fileID: 474248964}
